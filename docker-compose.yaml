@@ -1,0 +1,34 @@
+version: '3.8'
+services:
+
+  tree-service:
+    container_name: tree-service
+    build: ./
+    image: tree-service:latest
+    restart: unless-stopped
+    environment:
+      - SPRING_PROFILES_ACTIVE=docker
+    ports:
+      - '3001:3001'
+    depends_on:
+      -  tree-postgres
+    networks:
+      - tree-network
+
+  tree-postgres:
+    container_name:  tree-postgres
+    image: postgres:15.1-alpine
+    restart: unless-stopped
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=password
+    ports:
+      - '5432:5432'
+    networks:
+      - tree-network
+    volumes:
+      - ./src/main/resources/postgres/init.sql:/docker-entrypoint-initdb.d/init.sql
+
+networks:
+  tree-network:
+    driver: bridge

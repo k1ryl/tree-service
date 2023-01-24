@@ -1,0 +1,1 @@
+PostgreSQL initialization script could be found by path: `./src/main/resources/postgres/init.sql`
