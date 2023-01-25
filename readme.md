@@ -1,12 +1,29 @@
 # Tree Service
 
-### How to set up and run service
+## How to set up and run service
+### 1. W/O Docker
+1. You need Java to be installed and env variable `JAVA_HOME` to be set.
+2. You need PostgreSQL running with configuration:
+   * port: `5432`
+   * username: `postgres`
+   * password: `password`
+3. To start service run command:
+```
+.\mvnw spring-boot:run
+```
+
+### 2. W/ Docker
 ```
 docker-compose up
 ```
 2 containers will be created: `tree-service` and `tree-postgres`. Both will be build and initialized automatically.
 
-### HTTP API:
+### Run tests:
+```
+.\mvnw test
+```
+
+## HTTP API
 ### 1. Get Tree:
 ```
 curl --location --request GET 'http://localhost:3001/api/tree'
