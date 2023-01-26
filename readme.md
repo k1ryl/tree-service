@@ -2,12 +2,13 @@
 
 ## How to set up and run service
 ### 1. W/O Docker
-1. You need Java to be installed and env variable `JAVA_HOME` to be set.
+1. You need Java 17 to be installed and env variable `JAVA_HOME` to be set.
 2. You need PostgreSQL running with configuration:
    * port: `5432`
    * username: `postgres`
    * password: `password`
-3. To start service run command:
+3. Execute script from `./src/main/resources/postgres/init.sql` to database.
+4. To start service run command:
 ```
 .\mvnw spring-boot:run
 ```
@@ -69,3 +70,7 @@ Sample response:
     "children": null
 }
 ```
+
+## Other docs:
+1. [Design process](design-process.md)
+1. [Database](database.md)
